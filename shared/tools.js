@@ -44,6 +44,11 @@ function urls2pac(url_list, proxy_server) {
     s += '        return "PROXY ' + proxy_server + '";\n' +
          '    }\n';
 
+    s += '    var regexStr = /.*?:\\/\\/.*?(youku|qiyi|iqiyi|letv|sohu|ku6|ku6cdn)\\.com\\/crossdomain\\.xml/;\n' + 
+         '    if(regexStr.test(url)){\n'  +
+         '        return "PROXY api.youku.com:80";\n' +
+         '    }\n'
+         
     s += '    return "DIRECT";\n' +
          '}';
 
